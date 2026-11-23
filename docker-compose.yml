@@ -1,0 +1,20 @@
+# Desenvolvimento local: PostgreSQL + API (que também serve o frontend em http://localhost:3000)
+services:
+  db:
+    image: postgres:16
+    environment: { POSTGRES_USER: postgres, POSTGRES_PASSWORD: postgres, POSTGRES_DB: motopecas }
+    ports: ["5432:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck: { test: ["CMD-SHELL", "pg_isready -U postgres"], interval: 5s, retries: 10 }
+  api:
+    build: { context: ., dockerfile: backend/Dockerfile }
+    depends_on: { db: { condition: service_healthy } }
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@db:5432/motopecas
+      FRONTEND_URL: http://localhost:3000
+      ADMIN_EMAIL: admin@motopecassistem.com.br
+      ADMIN_PASSWORD: Trocar@123456
+    ports: ["3000:3000"]
+    volumes: [uploads:/app/backend/uploads]
+    command: sh -c "node src/database/migrate.js && node src/database/seed.js && node src/server.js"
+volumes: { pgdata: {}, uploads: {} }

@@ -1,0 +1,15 @@
+/* Identidade visual — Documento 04: azul, grafite e branco */
+:root {
+  --blue: #087BEB;  --blue-dark: #0663C0;  --blue-soft: #E7F2FE;
+  --graphite: #20242B;  --graphite-2: #2D333C;
+  --white: #FFFFFF;  --gray-50: #F3F5F7;  --gray-200: #DDE2E8;  --gray-500: #8A929D;  --gray-700: #4A525D;
+  --green: #16A36A;  --green-soft: #E3F6EE;
+  --red: #DC3545;    --red-soft: #FCE8EA;
+  --yellow: #F2B632; --yellow-soft: #FDF4DC;
+  --radius: 10px;  --radius-sm: 6px;
+  --shadow: 0 1px 3px rgba(32,36,43,.08), 0 4px 14px rgba(32,36,43,.06);
+  --shadow-lg: 0 10px 40px rgba(32,36,43,.18);
+  --font: 'Inter', 'Roboto', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+  --font-title: 'Montserrat', 'Inter', system-ui, sans-serif;
+  --container: 1200px;
+}
